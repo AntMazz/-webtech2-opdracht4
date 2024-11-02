@@ -1,0 +1,36 @@
+{# templates/uitlening/_form.html.twig #}
+
+{{ form_start(form) }}
+
+    {# Uitleendatum (uitgeleend_op) #}
+<div class="form-group">
+    {{ form_label(form.uitgeleend_op) }}
+    {{ form_widget(form.uitgeleend_op, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.uitgeleend_op) }}
+</div>
+
+{# Terugbrengdatum (teruggebracht_op) #}
+<div class="form-group">
+    {{ form_label(form.teruggebracht_op) }}
+    {{ form_widget(form.teruggebracht_op, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.teruggebracht_op) }}
+</div>
+
+{# Klant #}
+<div class="form-group">
+    {{ form_label(form.klant) }}
+    {{ form_widget(form.klant, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.klant) }}
+</div>
+
+{# Boek #}
+<div class="form-group">
+    {{ form_label(form.boek) }}
+    {{ form_widget(form.boek, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.boek) }}
+</div>
+
+{# Opslaan knop #}
+<button class="btn btn-success">Opslaan</button>
+
+{{ form_end(form) }}

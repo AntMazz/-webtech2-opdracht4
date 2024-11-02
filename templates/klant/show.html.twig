@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Klant Details</h1>
+
+    <p><strong>ID:</strong> {{ klant.id }}</p>
+    <p><strong>Naam:</strong> {{ klant.naam }}</p>
+    <p><strong>Email:</strong> {{ klant.email }}</p>
+
+    <a href="{{ path('app_klant_edit', {'id': klant.id}) }}">Bewerken</a>
+
+    <form method="post" action="{{ path('app_klant_delete', {'id': klant.id}) }}" style="display:inline;">
+        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ klant.id) }}">
+        <button type="submit">Verwijderen</button>
+    </form>
+
+    <a href="{{ path('app_klant_index') }}">Terug naar de lijst</a>
+{% endblock %}

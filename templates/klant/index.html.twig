@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Klanten</h1>
+
+    <a href="{{ path('app_klant_new') }}" class="btn btn-primary">Nieuwe Klant toevoegen</a>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Naam</th>
+            <th>Email</th>
+            <th>Acties</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for klant in klants %}
+            <tr>
+                <td>{{ klant.id }}</td>
+                <td>{{ klant.naam }}</td>
+                <td>{{ klant.email }}</td>
+                <td>
+                    <a href="{{ path('app_klant_show', {'id': klant.id}) }}">Bekijken</a>
+                    <a href="{{ path('app_klant_edit', {'id': klant.id}) }}">Bewerken</a>
+                    <form method="post" action="{{ path('app_klant_delete', {'id': klant.id}) }}" style="display:inline;">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ klant.id) }}">
+                        <button type="submit">Verwijderen</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}

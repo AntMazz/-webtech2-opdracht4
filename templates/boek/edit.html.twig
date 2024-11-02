@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bewerk Boek{% endblock %}
+
+{% block body %}
+    <h1>Bewerk Boek</h1>
+
+    {{ include('boek/_form.html.twig', {'form': form}) }}
+
+    <a href="{{ path('app_boek_index') }}" class="btn btn-secondary">Terug</a>
+{% endblock %}

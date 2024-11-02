@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nieuwe Uitlening{% endblock %}
+
+{% block body %}
+    <h1>Nieuwe Uitlening</h1>
+
+    {{ include('uitlening/_form.html.twig', {'form': form}) }}
+
+    <a href="{{ path('app_uitlening_index') }}" class="btn btn-secondary">Terug</a>
+{% endblock %}

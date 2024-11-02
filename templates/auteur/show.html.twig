@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Auteur Details{% endblock %}
+
+{% block body %}
+    <h1>Auteur Details</h1>
+
+    <p><strong>Naam:</strong> {{ auteur.naam }}</p>
+
+    <a href="{{ path('app_auteur_edit', {'id': auteur.id}) }}" class="btn btn-warning">Bewerk</a>
+    {{ include('auteur/_delete_form.html.twig') }}
+    <a href="{{ path('app_auteur_index') }}" class="btn btn-secondary">Terug</a>
+{% endblock %}

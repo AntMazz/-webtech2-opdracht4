@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Klant Bewerken</h1>
+
+    {{ form_start(form) }}
+
+    {# Hier voegen we de foutmeldingen toe #}
+    {% for error in form.vars.errors %}
+        <div class="alert alert-danger">
+            {{ error.message }}
+        </div>
+    {% endfor %}
+
+    {# Loop door de form fields om eventuele foutmeldingen per veld weer te geven #}
+    {% for field in form %}
+        <div class="form-group">
+            {{ form_label(field) }}
+            {{ form_widget(field, { 'attr': { 'class': 'form-control' } }) }}
+            {# Toon foutmeldingen voor het specifieke veld #}
+            {% for error in field.vars.errors %}
+                <div class="invalid-feedback">
+                    {{ error.message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+
+    <button class="btn btn-success">Opslaan</button>
+    {{ form_end(form) }}
+
+    <a href="{{ path('app_klant_index') }}" class="btn btn-secondary">Terug naar de lijst</a>
+{% endblock %}

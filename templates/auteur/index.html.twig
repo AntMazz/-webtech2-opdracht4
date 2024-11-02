@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Auteurs{% endblock %}
+
+{% block body %}
+    <h1>Auteurs</h1>
+
+    <a href="{{ path('app_auteur_new') }}" class="btn btn-primary">Nieuwe Auteur</a>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Naam</th>
+            <th>Acties</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for auteur in auteurs %}
+            <tr>
+                <td>{{ auteur.id }}</td>
+                <td>{{ auteur.naam }}</td>
+                <td>
+                    <a href="{{ path('app_auteur_show', {'id': auteur.id}) }}" class="btn btn-info">Bekijk</a>
+                    <a href="{{ path('app_auteur_edit', {'id': auteur.id}) }}" class="btn btn-warning">Bewerk</a>
+                    {{ include('auteur/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

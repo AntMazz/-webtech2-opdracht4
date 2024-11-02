@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hoofdpagina - Bibliotheek{% endblock %}
+
+{% block body %}
+    <h1 class="text-center">Welkom bij de Bibliotheek</h1>
+    <div class="text-center">
+        <a href="{{ path('app_klant_index') }}" class="btn btn-primary btn-lg m-2">Klanten</a>
+        <a href="{{ path('app_auteur_index') }}" class="btn btn-primary btn-lg m-2">Auteurs</a>
+        <a href="{{ path('app_boek_index') }}" class="btn btn-primary btn-lg m-2">Boeken</a>
+        <a href="{{ path('app_uitlening_index') }}" class="btn btn-primary btn-lg m-2">Uitleningen</a>
+    </div>
+
+    <hr>
+
+    <div class="card text-center">
+        <div class="card-body">
+            <h5 class="card-title">Beheer je bibliotheek effectief!</h5>
+            <p class="card-text">Gebruik deze applicatie om klanten, auteurs, boeken en uitleningen te beheren.</p>
+        </div>
+    </div>
+{% endblock %}

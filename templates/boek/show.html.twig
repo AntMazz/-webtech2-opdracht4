@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Boek Details{% endblock %}
+
+{% block body %}
+    <h1>Boek Details</h1>
+
+    <p><strong>Titel:</strong> {{ boek.titel }}</p>
+    <p><strong>Auteur:</strong> {{ boek.auteur ? boek.auteur.naam : 'Geen Auteur' }}</p>
+
+    <a href="{{ path('app_boek_edit', {'id': boek.id}) }}" class="btn btn-warning">Bewerk</a>
+    {{ include('boek/_delete_form.html.twig') }}
+    <a href="{{ path('app_boek_index') }}" class="btn btn-secondary">Terug</a>
+{% endblock %}

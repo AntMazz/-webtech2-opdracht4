@@ -1,0 +1,38 @@
+{# templates/uitlening/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Uitleeningen{% endblock %}
+
+{% block body %}
+<h1>Uitleeningen</h1>
+    {# Knop om een nieuwe uitleening toe te voegen #}
+    <a href="{{ path('app_uitlening_new') }}" class="btn btn-primary">Nieuwe Uitleening</a>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Klant</th>
+        <th>Boek</th>
+        <th>Uitleendatum</th>
+        <th>Terugbrengdatum</th>
+        <th>Acties</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for uitlening in uitlenings %}
+        <tr>
+            <td>{{ uitlening.id }}</td>
+            <td>{{ uitlening.klant ? uitlening.klant.naam : 'Geen Klant' }}</td>
+            <td>{{ uitlening.boek ? uitlening.boek.titel : 'Geen Boek' }}</td>
+            <td>{{ uitlening.getUitgeleendOp() ? uitlening.getUitgeleendOp()|date('Y-m-d H:i') : 'Onbekend' }}</td>
+            <td>{{ uitlening.getTeruggebrachtOp() ? uitlening.getTeruggebrachtOp()|date('Y-m-d H:i') : 'Onbekend' }}</td>
+            <td>
+                <a href="{{ path('app_uitlening_show', {'id': uitlening.id}) }}" class="btn btn-info">Bekijk</a>
+                <a href="{{ path('app_uitlening_edit', {'id': uitlening.id}) }}" class="btn btn-warning">Bewerk</a>
+                {{ include('uitlening/_delete_form.html.twig') }}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

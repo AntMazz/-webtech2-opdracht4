@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Uitlening Details{% endblock %}
+
+{% block body %}
+    <h1>Uitlening Details</h1>
+
+    <p><strong>Klant:</strong> {{ uitlening.klant ? uitlening.klant.naam : 'Geen Klant' }}</p>
+    <p><strong>Boek:</strong> {{ uitlening.boek ? uitlening.boek.titel : 'Geen Boek' }}</p>
+    <p><strong>Uitleendatum:</strong> {{ uitlening.uitleendatum ? uitlening.uitleendatum|date('Y-m-d') : 'Onbekend' }}</p>
+
+    <a href="{{ path('app_uitlening_edit', {'id': uitlening.id}) }}" class="btn btn-warning">Bewerk</a>
+    {{ include('uitlening/_delete_form.html.twig') }}
+    <a href="{{ path('app_uitlening_index') }}" class="btn btn-secondary">Terug</a>
+{% endblock %}
